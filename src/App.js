@@ -77,14 +77,16 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <PlayButtons
-        onEnterCustomWord={onEnterCustomWord}
-        onGenerateRandomWord={onGenerateRandomWord}
-      />
+      <div className="top-page">
+        <Header />
+        <PlayButtons
+          onEnterCustomWord={onEnterCustomWord}
+          onGenerateRandomWord={onGenerateRandomWord}
+        />
+        <WrongLetters wrongLetters={wrongLetters} />
+      </div>
       <div className="game-container">
         <Figure wrongLetters={wrongLetters} />
-        <WrongLetters wrongLetters={wrongLetters} />
         <Word selectedWord={selectedWord} correctLetters={correctLetters} />
       </div>
       <Popup

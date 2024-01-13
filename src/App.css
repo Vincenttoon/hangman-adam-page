@@ -1,21 +1,54 @@
+:root {
+  --dark: #093359;
+  --blue: #3a98ec;
+  --orange: #ec8e3a;
+  --pink: #e63aec;
+  --green: #3fec3a;
+  --light: #fcfeff;
+  --light-blue: #bfdef9;
+  --grey: #b3b7b5;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  background-color: #34495e;
-  color: #fff;
+  background-color: var(--dark);
+  color: var(--light-blue);
+  text-shadow: 1px 1px 2px var(--blue), 0 0 1em var(--pink),
+    0 0 0.2em var(--pink);
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 80vh;
+  height: 100vh; /* Change to 100vh to cover the full height of the viewport */
   margin: 0;
   overflow: hidden;
+  width: 85%; /* Change to 85% to cover 85% of the width of the viewport */
+  margin: auto; /* Center the content horizontally */
 }
 
 h1 {
   margin: 20px 0 0;
+}
+
+.App {
+  width: 80%;
+  margin: auto; /* Center the content horizontally */
+}
+
+.top-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.Header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
 }
 
 .game-container {
@@ -24,6 +57,11 @@ h1 {
   margin: auto;
   height: 350px;
   width: 450px;
+}
+
+.figure-div {
+  display: flex;
+  justify-content: center;
 }
 
 .figure-container {
@@ -38,15 +76,20 @@ h1 {
 }
 
 .wrong-letters-container {
-  position: absolute;
-  top: 20px;
-  right: 20px;
   display: flex;
-  flex-direction: column;
-  text-align: right;
+  flex-direction: column; /* Change to column */
+  align-items: center; /* Align items to the end (right) */
+  text-align: center;
+  color: var(--orange);
+  text-shadow: 1px 1px 2px var(--light);
 }
 
-.wrong-letters-container p {
+.wrong {
+  font-size: 2em;
+  color: var(--orange);
+  text-shadow: 1px 1px 2px var(--light);
+}
+z .wrong-letters-container p {
   margin: 0 0 5px;
 }
 
@@ -54,12 +97,15 @@ h1 {
   font-size: 24px;
 }
 
+.word-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .word {
   display: flex;
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  align-items: center;
 }
 
 .letter {
@@ -127,4 +173,176 @@ h1 {
 
 .notification-container.show {
   transform: translateY(-50px);
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+}
+
+.button-div {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px; /* Adjust the margin as needed */
+}
+
+.hidden-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.hidden-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+.hidden-input {
+  width: 83%;
+  height: 6vh;
+  margin-bottom: 1vh;
+  background-color: var(--light-blue);
+  font-size: 2.5em;
+  outline: none;
+}
+
+.hidden-input:active {
+  border: none;
+  background-color: var(--orange);
+}
+
+.hidden-input:hover {
+  border: none;
+  background-color: var(--orange);
+}
+
+.h-button-div {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.eye-sub {
+  width: 30%;
+}
+
+.main-button {
+  background: var(--light-blue);
+  color: var(--dark);
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+  letter-spacing: 0.1rem;
+  height: 3em;
+  transition: 0.2s;
+}
+
+.main-button:hover {
+  letter-spacing: 0.2rem;
+  background: var(--pink);
+  color: var(--dark);
+  animation: box 3s infinite;
+}
+
+.eye-sub {
+  width: 40%;
+  background: var(--grey);
+  color: var(--dark);
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+  letter-spacing: 0.1rem;
+  height: 3em;
+  transition: 0.2s;
+}
+
+.eye-sub:hover {
+  letter-spacing: 0.2rem;
+  background: var(--orange);
+  color: var(--dark);
+  animation: box 3s infinite;
+}
+
+.submit {
+  width: 40%;
+  background: var(--light-blue);
+  color: var(--dark);
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+  letter-spacing: 0.1rem;
+  height: 3em;
+  transition: 0.2s;
+}
+
+.submit:hover {
+  letter-spacing: 0.2rem;
+  background: var(--green);
+  color: var(--dark);
+  animation: box 3s infinite;
+}
+
+@media (max-width: 720px) {
+  body {
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+  }
+
+  .App {
+    width: 100%;
+    margin: auto;
+  }
+
+  .game-container {
+    width: 100%;
+  }
+
+  .button-div {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-button {
+    margin-bottom: 2vh;
+  }
+
+  .hidden-buttons {
+    width: 100%;
+  }
+
+  .hidden-input {
+    width: 95%;
+  }
+
+  .button-container {
+    align-items: center;
+  }
+
+  .wrong-letters-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    text-align: center;
+  }
+
+  .wrong-letters-container p {
+    margin: 0;
+  }
+
+  .word-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

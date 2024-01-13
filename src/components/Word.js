@@ -4,7 +4,7 @@ const Word = ({ selectedWord, correctLetters }) => {
   // Check if selectedWord is a string
   if (typeof selectedWord === "string") {
     return (
-      <div>
+      <div className="word-container">
         <div className="word">
           {selectedWord.split("").map((letter, i) => {
             return (

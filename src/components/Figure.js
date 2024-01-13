@@ -4,7 +4,7 @@ const Figure = ({ wrongLetters }) => {
   const errors = wrongLetters.length;
 
   return (
-    <div>
+    <div className="figure-div">
       <svg height="250" width="200" className="figure-container">
         {/* // <!-- Rod --> */}
         <line x1="60" y1="20" x2="140" y2="20" />
