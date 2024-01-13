@@ -29,7 +29,7 @@ const Popup = ({
         className="popup-container"
         style={finalMessage !== "" ? { display: "flex" } : {}}
       >
-        <div class="popup">
+        <div className="popup">
           <h2>{finalMessage}</h2>
           <h3>{finalMessageRevealWord}</h3>
           <button onClick={playAgain}>Play Again</button>

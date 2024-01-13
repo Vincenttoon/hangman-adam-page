@@ -12,14 +12,14 @@ import PlayButtons from "./components/PlayButtons";
 import { showNotification as show } from "./helpers/helpers";
 import words from "./helpers/words";
 
-let selectedWord = words[Math.floor(Math.random() * words.length)];
+let initialRandomWord = words[Math.floor(Math.random() * words.length)];
 
 function App() {
   const [playable, setPlayable] = useState(true);
   const [correctLetters, setCorrectLetters] = useState([]);
   const [wrongLetters, setWrongLetters] = useState([]);
   const [showNotification, setShowNotification] = useState(false);
-  
+  const [selectedWord, setSelectedWord] = useState(initialRandomWord);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -45,21 +45,36 @@ function App() {
     window.addEventListener("keydown", handleKeyDown);
 
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [correctLetters, wrongLetters, playable]);
+  }, [correctLetters, wrongLetters, playable, selectedWord]);
 
   function playAgain() {
     setPlayable(true);
-
-    // empty arrays
     setCorrectLetters([]);
     setWrongLetters([]);
 
     const random = Math.floor(Math.random() * words.length);
-    selectedWord = words[random];
+    setSelectedWord(words[random]);
   }
+
+  let onEnterCustomWord = (customWord) => {
+    console.log("Entered custom word:", customWord);
+    setSelectedWord(customWord.toLowerCase());
+  };
+  
+
+  let onGenerateRandomWord = () => {
+    const random = Math.floor(Math.random() * words.length);
+    setSelectedWord(words[random]);
+    playAgain();
+  };
+
   return (
     <div className="App">
       <Header />
+      <PlayButtons
+        onEnterCustomWord={onEnterCustomWord}
+        onGenerateRandomWord={onGenerateRandomWord}
+      />
       <div className="game-container">
         <Figure wrongLetters={wrongLetters} />
         <WrongLetters wrongLetters={wrongLetters} />
@@ -73,7 +88,6 @@ function App() {
         playAgain={playAgain}
       />
       <Notification showNotification={showNotification} />
-      <PlayButtons/>
     </div>
   );
 }

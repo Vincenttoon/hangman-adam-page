@@ -1,4 +1,4 @@
-const words = [
+let words = [
   "application",
   "programming",
   "interface",

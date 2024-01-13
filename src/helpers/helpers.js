@@ -6,17 +6,23 @@ export function showNotification(setter) {
 }
 
 export function checkWin(correct, wrong, word) {
-    let status = 'win';
+  let status = "win";
 
-    // check for win
-    word.split('').forEach(letter => {
-        if(!correct.includes(letter)){
-            status = '';
-        }
+  // Check if word is a non-empty string
+  if (typeof word === "string" && word.trim().length > 0) {
+    // Check for win
+    word.split("").forEach((letter) => {
+      if (!correct.includes(letter)) {
+        status = "";
+      }
     });
+  } else {
+    // Handle the case where word is not a non-empty string
+    status = "";
+  }
 
-    // check for loss
-    if(wrong.length === 9) status = 'lose';
+  // Check for loss
+  if (wrong.length === 9) status = "lose";
 
-    return status;
+  return status;
 }
