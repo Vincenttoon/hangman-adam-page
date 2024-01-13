@@ -24,7 +24,14 @@ function App() {
   useEffect(() => {
     const handleKeyDown = (event) => {
       const { key, keyCode } = event;
-      if (playable && keyCode >= 65 && keyCode <= 90) {
+
+      // Check if the input is not focused
+      if (
+        playable &&
+        keyCode >= 65 &&
+        keyCode <= 90 &&
+        !document.activeElement.tagName.toLowerCase().match(/input|textarea/)
+      ) {
         const letter = key.toLowerCase();
 
         if (selectedWord.includes(letter)) {
@@ -42,6 +49,7 @@ function App() {
         }
       }
     };
+
     window.addEventListener("keydown", handleKeyDown);
 
     return () => window.removeEventListener("keydown", handleKeyDown);
@@ -57,10 +65,9 @@ function App() {
   }
 
   let onEnterCustomWord = (customWord) => {
-  console.log("Entered custom word:", customWord);
-  setSelectedWord(customWord.toLowerCase());
-};
-
+    console.log("Entered custom word:", customWord);
+    setSelectedWord(customWord.toLowerCase());
+  };
 
   let onGenerateRandomWord = () => {
     const random = Math.floor(Math.random() * words.length);
