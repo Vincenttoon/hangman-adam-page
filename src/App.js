@@ -57,10 +57,10 @@ function App() {
   }
 
   let onEnterCustomWord = (customWord) => {
-    console.log("Entered custom word:", customWord);
-    setSelectedWord(customWord.toLowerCase());
-  };
-  
+  console.log("Entered custom word:", customWord);
+  setSelectedWord(customWord.toLowerCase());
+};
+
 
   let onGenerateRandomWord = () => {
     const random = Math.floor(Math.random() * words.length);
