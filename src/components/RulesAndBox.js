@@ -1,12 +1,18 @@
-import React from 'react'
+// RulesAndBox.js
+import React from "react";
+import { Link } from "react-router-dom";
 
 const RulesAndBox = () => {
   return (
-    <div className='rab'>
-      <button className='rules-button'>Rules</button>
-      <button className='gb-button'>Game Box</button>
+    <div className="rba">
+      <Link to="/rules">
+        <button className="main-button bottom-button">Rules</button>
+      </Link>
+      <Link to="/game-box">
+        <button className="main-button bottom-button">Game Box</button>
+      </Link>
     </div>
-  )
-}
+  );
+};
 
-export default RulesAndBox
+export default RulesAndBox;

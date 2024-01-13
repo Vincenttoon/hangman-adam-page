@@ -35,12 +35,19 @@ h1 {
 
 .App {
   width: 80%;
-  margin: auto; /* Center the content horizontally */
+  margin: auto;
+  height: 100%; /* Center the content horizontally */
 }
 
 .top-page {
   display: flex;
   flex-direction: column;
+}
+.end-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .Header {
@@ -290,20 +297,30 @@ button {
   animation: box 3s infinite;
 }
 
+.rba {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 3vh;
+  width: 100%;
+}
+
 @media (max-width: 720px) {
-  body {
+  /* body {
     height: 100vh;
     width: 100%;
     margin: 0;
-  }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } */
 
   .App {
     width: 100%;
-    margin: auto;
   }
 
   .game-container {
-    width: 100%;
+    margin: 0 auto;
+    padding: 0;
   }
 
   .button-div {
@@ -330,8 +347,9 @@ button {
   .wrong-letters-container {
     width: 100%;
     display: flex;
+    flex-direction: row;
     justify-content: center;
-    align-self: center;
+    align-items: center;
     text-align: center;
   }
 
@@ -344,5 +362,17 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .rba {
+    width: 100%;
+  }
+
+  .bottom-button {
+    width: 99%;
+  }
+
+  .bottom-button:hover {
+    background-color: var(--orange);
   }
 }
