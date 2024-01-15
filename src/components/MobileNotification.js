@@ -1,6 +1,5 @@
 // MobileNotification.js
 import React, { useEffect } from "react";
-import { showMobileNotification } from "../helpers/helpers";
 
 const MobileNotification = ({ mobileNoti, setShowMobileNotification }) => {
   useEffect(() => {

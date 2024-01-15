@@ -11,7 +11,6 @@ import MobileGuess from "./MobileGuess";
 import MobileNotification from "./MobileNotification";
 import {
   showNotification as show,
-  showMobileNotification,
 } from "../helpers/helpers";
 import words from "../helpers/words";
 
