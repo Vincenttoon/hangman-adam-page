@@ -72,13 +72,14 @@ function Homepage() {
     setSelectedWord(words[random]);
     playAgain();
   };
+
   return (
     <div>
       <div className="game-container">
         <PlayButtons
           onEnterCustomWord={onEnterCustomWord}
           onGenerateRandomWord={onGenerateRandomWord}
-        />{" "}
+        />
         <WrongLetters wrongLetters={wrongLetters} />
         <Figure wrongLetters={wrongLetters} />
         <Word selectedWord={selectedWord} correctLetters={correctLetters} />
