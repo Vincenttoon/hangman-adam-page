@@ -7,6 +7,7 @@ import Popup from "./Popup";
 import Notification from "./Notification";
 import PlayButtons from "./PlayButtons";
 import RulesAndBox from "./RulesAndBox";
+import MobileGuess from "./MobileGuess";
 import { showNotification as show } from "../helpers/helpers";
 import words from "../helpers/words";
 
@@ -53,6 +54,22 @@ function Homepage() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [correctLetters, wrongLetters, playable, selectedWord]);
 
+  const handleGuess = (letter) => {
+    if (playable && selectedWord.includes(letter)) {
+      if (!correctLetters.includes(letter)) {
+        setCorrectLetters((currentLetters) => [...currentLetters, letter]);
+      } else {
+        show(setShowNotification);
+      }
+    } else {
+      if (!wrongLetters.includes(letter)) {
+        setWrongLetters((wrongLetters) => [...wrongLetters, letter]);
+      } else {
+        show(setShowNotification);
+      }
+    }
+  };
+
   function playAgain() {
     setPlayable(true);
     setCorrectLetters([]);
@@ -83,6 +100,7 @@ function Homepage() {
         <WrongLetters wrongLetters={wrongLetters} />
         <Figure wrongLetters={wrongLetters} />
         <Word selectedWord={selectedWord} correctLetters={correctLetters} />
+        <MobileGuess onGuess={handleGuess} /> {/* Pass the callback function */}
         <RulesAndBox />
       </div>
       <Popup
