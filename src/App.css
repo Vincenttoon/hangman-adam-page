@@ -22,11 +22,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh; /* Change to 100vh to cover the full height of the viewport */
+  height: 100vh;
   margin: 0;
-  overflow: hidden;
-  width: 85%; /* Change to 85% to cover 85% of the width of the viewport */
-  margin: auto; /* Center the content horizontally */
+  width: 85%;
+  margin: auto;
 }
 
 h1 {
@@ -34,7 +33,7 @@ h1 {
 }
 
 .App {
-  width: 80%;
+  width: 100%;
   margin: auto;
   height: 100%; /* Center the content horizontally */
 }
@@ -59,11 +58,15 @@ h1 {
 }
 
 .game-container {
-  padding: 20px 30px;
+  /* padding: 20px 30px;
   position: relative;
   margin: auto;
   height: 350px;
-  width: 450px;
+  width: 450px; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .figure-div {
@@ -283,7 +286,7 @@ button {
   background: var(--light-blue);
   color: var(--dark);
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: lowercase;
   border: none;
   letter-spacing: 0.1rem;
   height: 3em;
@@ -308,7 +311,16 @@ button {
   display: none;
 }
 
+.mobile-noti {
+  display: none;
+}
 
+.mobile-noti.show {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+}
 
 @media (max-width: 1080px) {
   /* body {
@@ -430,8 +442,6 @@ button {
   }
 
   .notification-container {
-    width: 90%; /* Adjust the width as needed */
-    left: 5%; /* Center the notification on smaller screens */
-    bottom: 20px; /* Adjust the bottom position as needed */
+    display: none;
   }
 }

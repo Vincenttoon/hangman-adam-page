@@ -26,3 +26,10 @@ export function checkWin(correct, wrong, word) {
 
   return status;
 }
+
+export const showMobileNotification = (setShow) => {
+  setShow(true);
+  setTimeout(() => {
+    setShow(false);
+  }, 2000); // Different timeout for mobile notification
+};

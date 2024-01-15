@@ -8,7 +8,11 @@ import Notification from "./Notification";
 import PlayButtons from "./PlayButtons";
 import RulesAndBox from "./RulesAndBox";
 import MobileGuess from "./MobileGuess";
-import { showNotification as show } from "../helpers/helpers";
+import MobileNotification from "./MobileNotification";
+import {
+  showNotification as show,
+  showMobileNotification,
+} from "../helpers/helpers";
 import words from "../helpers/words";
 
 let initialRandomWord = words[Math.floor(Math.random() * words.length)];
@@ -19,6 +23,7 @@ function Homepage() {
   const [wrongLetters, setWrongLetters] = useState([]);
   const [showNotification, setShowNotification] = useState(false);
   const [selectedWord, setSelectedWord] = useState(initialRandomWord);
+  const [mobileNoti, setShowMobileNotifaction] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -58,14 +63,16 @@ function Homepage() {
     if (playable && selectedWord.includes(letter)) {
       if (!correctLetters.includes(letter)) {
         setCorrectLetters((currentLetters) => [...currentLetters, letter]);
+        setShowMobileNotifaction(false); // Reset mobile notification state
       } else {
-        show(setShowNotification);
+        setShowMobileNotifaction(true); // Trigger mobile notification
       }
     } else {
       if (!wrongLetters.includes(letter)) {
         setWrongLetters((wrongLetters) => [...wrongLetters, letter]);
+        setShowMobileNotifaction(false); // Reset mobile notification state
       } else {
-        show(setShowNotification);
+        setShowMobileNotifaction(true); // Trigger mobile notification
       }
     }
   };
@@ -100,6 +107,10 @@ function Homepage() {
         <WrongLetters wrongLetters={wrongLetters} />
         <Figure wrongLetters={wrongLetters} />
         <Word selectedWord={selectedWord} correctLetters={correctLetters} />
+        <MobileNotification
+          mobileNoti={mobileNoti}
+          setShowMobileNotification={setShowMobileNotifaction}
+        />
         <MobileGuess onGuess={handleGuess} /> {/* Pass the callback function */}
         <RulesAndBox />
       </div>
